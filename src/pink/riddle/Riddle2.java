@@ -1,6 +1,9 @@
 package pink.riddle;
 
 import pink.workshop.FileUtils;
+import pink.workshop.XOR;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * You're having a chill night at home, munching on a slice of pizza, when you're mom calls you in
@@ -19,7 +22,16 @@ import pink.workshop.FileUtils;
 public class Riddle2 {
 
   public static void main(String[] args) {
-    byte[] file = FileUtils.readFileAsBytes("Riddle2/Riddle2.jpg");
+    byte[] file = FileUtils.readFileAsBytes("Riddle2/Riddle2.png");
 
+    // Read in the two other files
+    byte[] plaintextData = FileUtils.readFileAsBytes("Riddle2/example.jpg");
+    byte[] encryptedData = FileUtils.readFileAsBytes("Riddle2/example-encrypted.jpg");
+
+    // Print out their XOR - the key should be visible as a repeating string: VeryPinkPassword
+    System.out.println(new String(XOR.xor(plaintextData, encryptedData), StandardCharsets.UTF_8));
+
+    // Now decrypt the other file with the key
+    FileUtils.writeFile(XOR.xor(file, "VeryPinkPassword".getBytes()), "Riddle2/solvedit.png");
   }
 }

@@ -1,6 +1,9 @@
 package pink.riddle;
 
 import pink.workshop.FileUtils;
+import pink.workshop.RSA;
+
+import java.security.PrivateKey;
 
 /**
  * You started your own (ethical) code cracker business, and the first assignment is just in!
@@ -24,8 +27,17 @@ import pink.workshop.FileUtils;
  */
 public class Riddle1 {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     byte[] file = FileUtils.readFileAsBytes("Riddle1/secret.txt");
 
+    // Realizing that the secret is encrypted with our own public key, we know that we can decrypt it
+    // with our own private key too.
+    // Read the private key file
+    PrivateKey privateKey = RSA.readPrivateKey("Riddle1/private.key");
+
+    // Decrypt with RSA
+    byte[] decryptedKey = RSA.decrypt(privateKey, file);
+    FileUtils.writeFile(decryptedKey, "Riddle1/solvedit.txt");
   }
+
 }

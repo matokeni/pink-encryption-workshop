@@ -1,5 +1,6 @@
 package pink.workshop;
 
+import javax.crypto.Cipher;
 import java.security.*;
 import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
@@ -9,18 +10,21 @@ import java.security.spec.X509EncodedKeySpec;
 public class RSA {
 
   public static KeyPair generateKeys() throws NoSuchAlgorithmException {
-    // Workshop code comes here :)
-    return null;
+    KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
+    generator.initialize(1024);
+    return generator.generateKeyPair();
   }
 
   public static byte[] encrypt(PublicKey publicKey, byte[] data) throws Exception {
-    // Workshop code comes here :)
-    return null;
+    Cipher cipher = Cipher.getInstance("RSA");
+    cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+    return cipher.doFinal(data);
   }
 
   public static byte[] decrypt(PrivateKey privateKey, byte[] data) throws Exception {
-    // Workshop code comes here :)
-    return null;
+    Cipher cipher = Cipher.getInstance("RSA");
+    cipher.init(Cipher.DECRYPT_MODE, privateKey);
+    return cipher.doFinal(data);
   }
 
   /**
