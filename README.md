@@ -1,4 +1,6 @@
 # Pink Encryption Workshop
+
+https://app.slack.com/client/T57RK93H6/C054HPCJYE6
 Unleash your inner hacker with Pink!
 
 Hello and Welcome to our workshop on the 14th of May! We will be talking about encryption algorithms and their real-life use-cases, write awesome code in Java, and solve some riddles :)
