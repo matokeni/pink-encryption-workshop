@@ -1,0 +1,7 @@
+PinkHacker: we need to encrypt our conversation, its not safe... generating RSA keypair now!
+
+BlueHacker: awesome, ur so smart!
+
+PinkHacker: ... okay i have the keypair! i also came up with a great symmetric key, sending!
+
+PinkHacker: <secret.txt>
